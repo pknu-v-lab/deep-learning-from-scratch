@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 import numpy as np
 import matplotlib.pyplot as plt
 from deep_convnet import DeepConvNet
@@ -10,7 +10,7 @@ from dataset.mnist import load_mnist
 (x_train, t_train), (x_test, t_test) = load_mnist(flatten=False)
 
 network = DeepConvNet()
-network.load_params("deep_convnet_params.pkl")
+network.load_params("./ch08/deep_convnet_params.pkl")
 
 print("calculating test accuracy ... ")
 #sampled = 1000

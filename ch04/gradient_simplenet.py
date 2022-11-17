@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 import numpy as np
 from common.functions import softmax, cross_entropy_error
 from common.gradient import numerical_gradient
@@ -20,12 +20,13 @@ class simpleNet:
 
         return loss
 
-x = np.array([0.6, 0.9])
-t = np.array([0, 0, 1])
+if __name__ == '__main__':
+    x = np.array([0.6, 0.9])
+    t = np.array([0, 0, 1])
 
-net = simpleNet()
+    net = simpleNet()
 
-f = lambda w: net.loss(x, t)
-dW = numerical_gradient(f, net.W)
+    f = lambda w: net.loss(x, t)
+    dW = numerical_gradient(f, net.W)
 
-print(dW)
+    print(dW)

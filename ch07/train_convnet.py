@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import numpy as np
 import matplotlib.pyplot as plt
 from dataset.mnist import load_mnist
@@ -27,7 +27,7 @@ trainer = Trainer(network, x_train, t_train, x_test, t_test,
 trainer.train()
 
 # 매개변수 보존
-network.save_params("params.pkl")
+network.save_params("./ch07/params.pkl")
 print("Saved Network Parameters!")
 
 # 그래프 그리기

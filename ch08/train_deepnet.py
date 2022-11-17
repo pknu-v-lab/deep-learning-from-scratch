@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 import numpy as np
 import matplotlib.pyplot as plt
 from dataset.mnist import load_mnist
@@ -17,5 +17,5 @@ trainer = Trainer(network, x_train, t_train, x_test, t_test,
 trainer.train()
 
 # 매개변수 보관
-network.save_params("deep_convnet_params.pkl")
+network.save_params("./08/deep_convnet_params.pkl")
 print("Saved Network Parameters!")

@@ -24,5 +24,5 @@ network = SimpleConvNet()
 filter_show(network.params['W1'])
 
 # 학습된 가중치
-network.load_params("params.pkl")
+network.load_params("./ch07/params.pkl")
 filter_show(network.params['W1'])

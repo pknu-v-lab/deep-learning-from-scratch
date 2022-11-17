@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 import numpy as np
 import pickle
 from dataset.mnist import load_mnist
@@ -13,7 +13,7 @@ def get_data():
 
 
 def init_network():
-    with open("sample_weight.pkl", 'rb') as f:
+    with open("./ch03/sample_weight.pkl", 'rb') as f:
         network = pickle.load(f)
     return network
 
@@ -32,16 +32,17 @@ def predict(network, x):
     return y
 
 
-x, t = get_data()
-network = init_network()
+if __name__ == '__main__':
+    x, t = get_data()
+    network = init_network()
 
-batch_size = 100 # 배치 크기
-accuracy_cnt = 0
+    batch_size = 100 # 배치 크기
+    accuracy_cnt = 0
 
-for i in range(0, len(x), batch_size):
-    x_batch = x[i:i+batch_size]
-    y_batch = predict(network, x_batch)
-    p = np.argmax(y_batch, axis=1)
-    accuracy_cnt += np.sum(p == t[i:i+batch_size])
+    for i in range(0, len(x), batch_size):
+        x_batch = x[i:i+batch_size]
+        y_batch = predict(network, x_batch)
+        p = np.argmax(y_batch, axis=1)
+        accuracy_cnt += np.sum(p == t[i:i+batch_size])
 
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+    print("Accuracy:" + str(float(accuracy_cnt) / len(x)))

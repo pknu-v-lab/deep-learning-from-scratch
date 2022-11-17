@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 import numpy as np
 import matplotlib.pyplot as plt
 from simple_convnet import SimpleConvNet
@@ -27,11 +27,11 @@ network = SimpleConvNet(input_dim=(1,28,28),
                         hidden_size=100, output_size=10, weight_init_std=0.01)
 
 # 학습된 가중치
-network.load_params("params.pkl")
+network.load_params("./ch07/params.pkl")
 
 filter_show(network.params['W1'], 16)
 
-img = imread('../dataset/cactus_gray.png')
+img = imread('./dataset/cactus_gray.png')
 img = img.reshape(1, 1, *img.shape)
 
 fig = plt.figure()

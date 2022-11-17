@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
+sys.path.append(os.getcwd())  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import pickle
 import numpy as np
 from collections import OrderedDict
@@ -153,7 +153,7 @@ class SimpleConvNet:
         with open(file_name, 'wb') as f:
             pickle.dump(params, f)
 
-    def load_params(self, file_name="params.pkl"):
+    def load_params(self, file_name="./ch07/params.pkl"):
         with open(file_name, 'rb') as f:
             params = pickle.load(f)
         for key, val in params.items():

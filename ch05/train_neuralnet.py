@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)
+sys.path.append(os.getcwd())  # 프로젝트 루트를 시스템 경로에 추가
 
 import numpy as np
 from dataset.mnist import load_mnist

@@ -17,15 +17,16 @@ def tangent_line(f, x):
     print(d)
     y = f(x) - d*x
     return lambda t: d*t + y
-     
-x = np.arange(0.0, 20.0, 0.1)
-y = function_1(x)
-plt.xlabel("x")
-plt.ylabel("f(x)")
 
-tf = tangent_line(function_1, 5)
-y2 = tf(x)
+if __name__ == '__main__':
+    x = np.arange(0.0, 20.0, 0.1)
+    y = function_1(x)
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
 
-plt.plot(x, y)
-plt.plot(x, y2)
-plt.show()
+    tf = tangent_line(function_1, 5)
+    y2 = tf(x)
+
+    plt.plot(x, y)
+    plt.plot(x, y2)
+    plt.show()
